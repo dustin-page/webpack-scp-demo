@@ -15,8 +15,34 @@ module.exports = {
     // output file(s) and chunks
     output: {
         path: path.resolve(__dirname, 'dist'),
+        /* [name] will be replaced by name value of cacheGroup */
+        chunkFilename: '[name].js',
         filename: 'main.js',
         publicPath: '/'
+    },
+
+    // optimization
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                default: false,
+                vendors: false,
+
+                // vendor chunk
+                vendor: {
+                    /* 
+                    By default, SplitChunksPlugin prepends key of the chunk to the name of build file. 
+                    We can avoid that by using name key and specify different name.
+                    */
+                    // name of the chunk
+                    name: 'vendor',
+                    // sync + async chunks
+                    chunks: 'all',
+                    // import file path containing node_modules
+                    test: /node_modules/
+                }
+            }
+        }
     },
 
     // module/loaders configuration
