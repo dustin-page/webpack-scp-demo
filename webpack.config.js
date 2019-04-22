@@ -47,7 +47,9 @@ module.exports = {
         historyApiFallback: true,
 
         // open browser on server start
-        open: config.get('open')
+        open: config.get('open'),
+
+        port:8090
     },
 
     // generate source map

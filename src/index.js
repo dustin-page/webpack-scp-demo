@@ -5,6 +5,11 @@ import { BrowserRouter, Switch, NavLink as Link, Route } from 'react-router-dom'
 
 import './styles.scss';
 
+// import async.js
+import( './async.js' ).then( ( data ) => {
+    console.log( data );
+} );
+
 // home route component
 const HomeComponent = ( props ) => {
     return (
