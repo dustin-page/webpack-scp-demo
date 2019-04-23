@@ -1,9 +1,11 @@
 import React from 'react';
 
+import HelloComponent from './components/common/hello.component';
+
 // home route component
 const HomeComponent = ( props ) => {
     return (
-        <h1>Home Component!</h1>
+        <h1>Home Component! <HelloComponent /></h1>
     );
 }
 

@@ -39,7 +39,19 @@ module.exports = {
                     // sync + async chunks
                     chunks: 'all',
                     // import file path containing node_modules
-                    test: /node_modules/
+                    test: /node_modules/,
+                    // priority
+                    priority: 20
+                },
+
+                // common chunk
+                common: {
+                    name: 'common',
+                    minChunks: 2,
+                    chunks: 'all',
+                    priority: 10,
+                    reuseExistingChunk: true,
+                    enforce: true
                 }
             }
         }

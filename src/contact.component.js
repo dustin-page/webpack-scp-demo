@@ -1,9 +1,11 @@
 import React from 'react';
+ 
+import HelloComponent from './components/common/hello.component';
 
 // contact route component
 const ContactComponent = ( props ) => {
     return (
-        <h1>Contact Component!</h1>
+        <h1>Contact Component! <HelloComponent /></h1>
     );
 }
 
