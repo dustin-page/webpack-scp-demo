@@ -16,7 +16,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         /* [name] will be replaced by name value of cacheGroup */
-        //chunkFilename: '[name].js',
+        chunkFilename: '[name].js',
         filename: 'main.js',
         publicPath: '/'
     },
@@ -75,7 +75,25 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, 'index.html')
-        })
+        }),
+        /* Replaces number based file names with chunk names
+           Note: This improves debugging when async loading modules with import(). Example: import('./home.component')
+        */
+        new webpack.NamedChunksPlugin(chunk => {
+            if (chunk.name) {
+              return chunk.name;
+            }
+      
+            // eslint-disable-next-line no-underscore-dangle
+            return [...chunk._modules]
+              .map(m =>
+                path.relative(
+                  m.context,
+                  m.userRequest.substring(0, m.userRequest.lastIndexOf("."))
+                )
+              )
+              .join("_");
+          }),
     ],
 
     // development server configuration
