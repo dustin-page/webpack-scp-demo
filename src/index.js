@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, NavLink as Link, Route } from "react-router-dom";
 
+import AsyncHomeComponent from "./async.home.component";
+import AsyncAboutComponent from "./async.about.component";
 import AsyncContactComponent from "./async.contact.component";
 
 import "./styles.scss";
@@ -11,15 +13,6 @@ import("./async.js").then(data => {
   console.log(data);
 });
 
-// home route component
-const HomeComponent = props => {
-  return <h1>Home Component!</h1>;
-};
-
-// about route component
-const AboutComponent = props => {
-  return <h1>About Component!</h1>;
-};
 
 class App extends Component {
   constructor(props) {
@@ -43,8 +36,8 @@ class App extends Component {
           </div>
 
           <Switch>
-            <Route exact path="/" component={HomeComponent} />
-            <Route path="/about" component={AboutComponent} />
+            <Route exact path="/" component={AsyncHomeComponent} />
+            <Route path="/about" component={AsyncAboutComponent} />
             {/* <Route path="/contact" component={ AsyncContactComponent } /> */}
             {/* 
             By default, ContactComponent receives props from Route which contains history, match and location. 

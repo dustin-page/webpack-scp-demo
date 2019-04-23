@@ -16,7 +16,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         /* [name] will be replaced by name value of cacheGroup */
-        chunkFilename: '[name].js',
+        //chunkFilename: '[name].js',
         filename: 'main.js',
         publicPath: '/'
     },
